@@ -31,6 +31,7 @@ Every type has `gets(is)` to scan and allocate values from streams.
 Every type has `puts(os)` to print values to streams.
 
 Every value has a `size`.
+Every value has a `addr`. // copy(value) same as memcpy(addr(dest), addr(src), size(src))
 
 ## New types
 
@@ -67,3 +68,9 @@ Closures stores pointer to top of dict stack(s).
 Bind used current dictionary values for args. 
 
 `func(type arg, ...)` apply scope to arg based on func???
+
+## RAII
+
+RAII(FILE* p = fopen(...), { .... }, fclose(p) )
+
+#define RAII(make, body, free) \
