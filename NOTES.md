@@ -2,6 +2,11 @@
 
 ## Things
 
+Use `FILE*` for input/output. Use `fdopen` to convert from file descriptor
+and `fmemopen` for strings.
+
+_Value types_ - a type having contiguous bits
+
 _Signature_ - return type and argument types
 
 _Function_ - pointer to C symbol
@@ -13,9 +18,22 @@ _Bind_ call stack and signature - makes copies of values.
 
 _Call_  function on bound stack and signature. Free's bound values after call (`cdecl`)
 
-_Proc_ - user defined function.
+_Proc_ - user defined function. Every proc has a closure/environment pointer to look up variables.
+The pointer is just the current environment. A new dict is pushed for variables local to
+the function.
 
 _Exec_ - call proc to get a value.
+
+_Dict_ - key/value pairs
+Every dict is fixed size. May have special last entry to point to another dictionary.
+(Fat list of dicts.)
+
+Push dict in front of dict. Dict becomes back.
+Back dict makes special last entry.
+
+Dicts are immutable. Can pass pointers into dicts for closure/environment.
+
+_Stack_ - dictionary stack
 
 ## Types and Values
 
@@ -69,8 +87,8 @@ Bind used current dictionary values for args.
 
 `func(type arg, ...)` apply scope to arg based on func???
 
-## RAII
+## Examples
 
-RAII(FILE* p = fopen(...), { .... }, fclose(p) )
-
-#define RAII(make, body, free) \
+```
+	ic_type x = ic_type_make(IC_DOUBLE);
+```
