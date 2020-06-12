@@ -1,0 +1,15 @@
+all
+cast-align
+cast-qual
+disabled-optimization
+extra
+format=2
+init-self
+logical-op
+missing-declarations
+missing-include-dirs
+no-unused-function
+redundant-decls
+sign-conversion
+switch-default
+undef
