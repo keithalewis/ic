@@ -5,14 +5,14 @@
 
 // ic type id to ffi_type
 #define FFI_TYPE_TABLE(X) \
-    X(CHAR, schar) \
-    X(UHAR, uchar) \
-    X(INT, sint) \
+    X(SCHAR, schar) \
+    X(UCHAR, uchar) \
+    X(SINT, sint) \
     X(UINT, uint) \
-    X(POINTER, POINTER) \
+    X(POINTER, pointer) \
 
-#define X(a,b) [IC_TYPE_##a] = FFI_TYPE_##b,
-static ic_ffi_type_map[] = {
+#define X(a,b) [IC_TYPE_##a] = &ffi_type_##b,
+static ffi_type* ic_ffi_type_map[] = {
     FFI_TYPE_TABLE(X)
 };
 #undef X
@@ -24,14 +24,12 @@ typedef struct {
 
 void* ic_type_make(ic_type_enum id)
 {
-    ic_type_struct* type = 0;
+	ffi_type* ptype = ic_ffi_type_map[id];
 
-    if (id == IC_TYPE_INT) {
-        type = malloc(sizeof(ic_type_struct) + sizeof(int));
-        if (type) {
-            type->type = ffi_type_sint;
-        }
-    }
+    ic_type_struct* type = malloc(sizeof(ic_type_struct) + ptype->size);
+	if (type) {
+		type->type = *ptype;
+	}
 
     return type;
 }
