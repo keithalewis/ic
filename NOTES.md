@@ -3,7 +3,7 @@
 ## Things
 
 Use `FILE*` for input/output. Use `fdopen` to convert from file descriptor
-and `fmemopen` for strings.
+and `fmemopen` for strings of known length. Use `open_memstream` to write to a dynamic string buffer.
 
 _Value types_ - a type having contiguous bits
 
@@ -12,7 +12,7 @@ _Signature_ - return type and argument types
 _Function_ - pointer to C symbol
 
 _Call stack_ - array of `void*` pointers to argument values.
-Push (left to right) pointer on stack (including null), pop pointer from stack.
+Push (left to right) pointer on stack (including null), pop (right to left) pointer from stack.
 
 _Bind_ call stack and signature - makes copies of values.
 
@@ -30,6 +30,8 @@ Every dict is fixed size. May have special last entry to point to another dictio
 
 Push dict in front of dict. Dict becomes back.
 Back dict makes special last entry.
+
+Push marker/pop marker.
 
 Dicts are immutable. Can pass pointers into dicts for closure/environment.
 
