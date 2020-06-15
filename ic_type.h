@@ -34,19 +34,24 @@
 typedef enum { IC_TYPE(X) } ic_type_enum;
 #undef X
 
-// pointer to architecture specific bits
-typedef void *ic_data;
-
 //
 // memory management
 //
 
-ic_data ic_type_make(ic_type_enum);
+void* ic_type_make(ic_type_enum);
 
 // copy src to dest and return dest
-ic_data ic_type_copy(ic_data dest, ic_type_enum, const ic_data src);
+void* ic_type_copy(void* dest, ic_type_enum, const void* src);
 
-void ic_type_free(ic_data);
+void ic_type_free(void*);
+
+//
+// Input/output
+///
+
+// return same as scan/print
+int ic_type_get(FILE*, ic_type_enum, void*);
+int ic_type_put(FILE*, ic_type_enum, const void*);
 
 /*
 // unique identifier
