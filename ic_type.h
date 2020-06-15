@@ -7,18 +7,26 @@
 // clang-format off
 //    id,        C type,        printf/scanf code
 // !}column -t -s,
-#define IC_TYPE(X)                              \
-  X(SCHAR,         signed char,     c)  \
-  X(UCHAR,         unsigned char,   c)  \
-  X(SSHORT,        signed short,    i)  \
-  X(USHORT,        unsigned short,  u)  \
-  X(SINT,          signed int,      i)  \
-  X(UINT,          unsigned int,    u)  \
+#define IC_TYPE(X)                       \
+  X(SCHAR,         signed char,     c)   \
+  X(UCHAR,         unsigned char,   c)   \
+  X(SSHORT,        signed short,    i)   \
+  X(USHORT,        unsigned short,  u)   \
+  X(SINT,          signed int,      i)   \
+  X(UINT,          unsigned int,    u)   \
   X(SLONG,         signed long,     li)  \
   X(ULONG,         unsigned long,   lu)  \
-  X(SINT32,        int32_t,         i8) \
-  X(UINT32,        uint32_t,        u8) \
-  X(POINTER,       void *,          p)  \
+  X(FLOAT,         float,           f)   \
+  X(DOUBLE         double,          lf)  \
+  X(SINT8,         int8_t,          i8)  \
+  X(SINT8,         int8_t,          i8)  \
+  X(SINT16,        int16_t,         i16) \
+  X(UINT16,        uint16_t,        u16) \
+  X(UINT32,        uint32_t,        u32) \
+  X(UINT32,        uint32_t,        u32) \
+  X(SINT64,        int64_t,         i64) \
+  X(UINT64,        uint64_t,        u64) \
+  X(POINTER,       void *,          p)   \
 // ...
 // clang-format on
 
