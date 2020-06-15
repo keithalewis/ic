@@ -90,5 +90,17 @@ Bind used current dictionary values for args.
 ## Examples
 
 ```
-	ic_type x = ic_type_make(IC_DOUBLE);
+	void* x = ic_type_make(IC_TYPE_DOUBLE);
+	ic_type_encode(stdin, IC_TYPE_DOUBLE, x);
+	ic_type_decode(stdout, IC_TYPE_DOUBLE, x);
+
+	void* y = ic_type_make(IC_TYPE_DOUBLE);
+	void* s = ic_call_make(1); // call stack
+	ic_call_push(s, IC_TYPE_DOUBLE, x);
+	ic_call_func(s, cos, y);
+	ic_call_free(s);
+	ic_type_decode(stdout, IC_TYPE_DOUBLE, y);
+	lc_type_free(y);
+
+	lc_type_free(x);
 ```

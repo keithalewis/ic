@@ -27,19 +27,20 @@ typedef enum { IC_TYPE(X) } ic_type_enum;
 #undef X
 
 // pointer to architecture specific bits
-typedef void *ic_type;
+typedef void *ic_data;
 
 //
 // memory management
 //
 
-ic_type ic_type_make(ic_type_enum);
+ic_data ic_type_make(ic_type_enum);
 
 // copy src to dest and return dest
-ic_type ic_type_copy(ic_type dest, const ic_type src);
+ic_data ic_type_copy(ic_data dest, ic_type_enum, const ic_data src);
 
-void ic_type_free(ic_type);
+void ic_type_free(ic_data);
 
+/*
 // unique identifier
 int ic_type_id(ic_type);
 
@@ -64,3 +65,4 @@ static inline ic_type ic_type_item(ic_type t, size_t i) {
 int ic_type_print(FILE *, ic_type);
 // scan to FILE*
 int ic_type_scan(FILE *, ic_type);
+*/
