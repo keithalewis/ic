@@ -17,12 +17,12 @@
   X(SLONG,         signed long,     li)  \
   X(ULONG,         unsigned long,   lu)  \
   X(FLOAT,         float,           f)   \
-  X(DOUBLE         double,          lf)  \
+  X(DOUBLE,        double,          lf)  \
   X(SINT8,         int8_t,          i8)  \
-  X(SINT8,         int8_t,          i8)  \
+  X(UINT8,         uint8_t,         i8)  \
   X(SINT16,        int16_t,         i16) \
   X(UINT16,        uint16_t,        u16) \
-  X(UINT32,        uint32_t,        u32) \
+  X(SINT32,        int32_t,         u32) \
   X(UINT32,        uint32_t,        u32) \
   X(SINT64,        int64_t,         i64) \
   X(UINT64,        uint64_t,        u64) \
