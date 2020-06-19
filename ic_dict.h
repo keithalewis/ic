@@ -1,4 +1,4 @@
-// ic_dict.h - dictionary
+// ic_dict.h - double ended queue of dictionaries
 #pragma once
 
 typedef void* ic_dict;
@@ -6,9 +6,9 @@ typedef void* ic_dict;
 ic_dict ic_dict_make(size_t);
 void ic_dict_free(ic_dict);
 
-// push value of key at back of current or next dictionary
+// push value of key at back of current dictionary
 void* ic_dict_put(ic_dict dict, const char* key, const void* data, size_t size);
-// find value of key in current or next dictionary
+// find value of key in current dictionary
 const void* ic_dict_get(ic_dict dict, const char* key, size_t* size);
 
 // push new dict on top of stack
